@@ -35,20 +35,22 @@ class HttpHandler(BaseHTTPRequestHandler):
         self.send_header('Location', '/')
         self.end_headers()
 
+  
+
     def do_GET(self):
         if self.path == '/':
-            self.send_html_file('index.html')
+            self.send_file('index.html')
         elif self.path == '/style.css':
             self.send_file('style.css', 'text/css')
         elif self.path == '/logo.png':
             self.send_file('logo.png', 'image/png')
         elif self.path == '/message.html':
-            self.send_html_file('message.html')
+            self.send_file('message.html')
         else:
-            self.send_html_file('error.html', 404)   
+            self.send_file('error.html', 404) 
 
    
-    def send_html_file(self, filename, status=200):
+    def send_file(self, filename, status=200):
         base_path = '/Users/HP/Desktop/4_Computer_systems_Tier2/goit-cs-hw-06/myenv/Project'
         full_path = os.path.join(base_path, filename)
         try:
