@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "80:3000"
+    depends_on:
+      - Projectdb
+
+  Projectdb:
+    image: mongo:5.0
+    ports:
+      - "27018:27017"
+    volumes:
+      - myapp:/data/db
+
+volumes:
+  myapp:
+
+
+
+
+
+
+
+
+
+
+
+# version: '3.9'
+
+# services:
+#   app:
+#     build: .
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - mongoDB
+#     environment:
+#       - MONGO_URI=mongodb://mongoDB:27018
+#     command: bash -c "while ! nc -z mongoDB 27017; do sleep 1; done; python ./app/main.py"
+
+#   mongoDB:
+#     image: mongo:5.0
+#     ports:
+#       - "27018:27017"
+#     volumes:
+#       - mongo-data:/data/db
+
+# volumes:
+#   mongo-data:
+
+
+
+
+
+
+

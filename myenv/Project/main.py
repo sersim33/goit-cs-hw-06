@@ -11,7 +11,9 @@ import os
 from multiprocessing import Process
 
 
-uri = "mongodb://localhost:27017"
+uri = "mongodb://Projectdb:27018"
+# uri = os.getenv('MONGO_URI')
+
 
 HTTPServer_Port = 3000
 UDP_IP = "127.0.0.1"
@@ -90,8 +92,8 @@ def run_http_server():
 
 def save_data(data):
     client = MongoClient(uri, server_api=ServerApi("1"))
-    db = client.DB_Client
-    
+    # db = client.DB_Client
+    db = client.Projectdb
     # Вибір колекції для вставки документів
     collection = db['client']
     
